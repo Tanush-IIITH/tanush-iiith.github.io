@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis - Tanush Garg</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/text_analysis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+        </div>
+        
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">About Me</a></li>
+                <li><a href="birthplace.html">Birthplace</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="skills.html">Technical Skills</a></li>
+                <li><a href="text_analysis.html" class="active">Text Analysis</a></li>
+                <li><a href="cv.html">CV</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="text-analysis" class="enhanced-about">
+            <div class="section-header">
+                <span class="section-label">Interactive Tool</span>
+                <h2>Text Analysis</h2>
+                <div class="accent-line"></div>
+            </div>
+            
+            <p class="tool-intro">This interactive tool demonstrates my programming skills by analyzing text in real-time. Enter or paste any text to get insights about its composition.</p>
+            
+            <div class="analysis-container">
+                <div class="input-section">
+                    <h3>Enter Text</h3>
+                    <textarea id="text-input" placeholder="Enter or paste your text here for analysis..."></textarea>
+                    <div class="action-buttons">
+                        <button id="clear-btn" class="secondary-btn">Clear</button>
+                        <button id="sample-btn" class="secondary-btn">Load Sample</button>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h3>Analysis Results</h3>
+                    <div class="results-container">
+                        <div class="result-card word-count">
+                            <div class="result-icon">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Word Count</h4>
+                                <p id="word-count">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card char-count">
+                            <div class="result-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Character Count</h4>
+                                <p id="char-count">0</p>
+                                <p id="char-no-spaces" class="sub-count">Without spaces: 0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card sentence-count">
+                            <div class="result-icon">
+                                <i class="fas fa-align-left"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Sentence Count</h4>
+                                <p id="sentence-count">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card paragraph-count">
+                            <div class="result-icon">
+                                <i class="fas fa-paragraph"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Paragraph Count</h4>
+                                <p id="paragraph-count">0</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Moved and reformatted detailed character metrics -->
+                        <div class="result-card detailed-chars">
+                            <div class="result-icon">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Character Breakdown</h4>
+                                <div class="char-metrics-vertical">
+                                    <div class="char-metric-item">
+                                        <span class="metric-label">Letters:</span>
+                                        <span id="letter-count" class="metric-value">0</span>
+                                    </div>
+                                    <div class="char-metric-item">
+                                        <span class="metric-label">Spaces:</span>
+                                        <span id="space-count" class="metric-value">0</span>
+                                    </div>
+                                    <div class="char-metric-item">
+                                        <span class="metric-label">Newlines:</span>
+                                        <span id="newline-count" class="metric-value">0</span>
+                                    </div>
+                                    <div class="char-metric-item">
+                                        <span class="metric-label">Special Symbols:</span>
+                                        <span id="symbol-count" class="metric-value">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Removed the detailed-results section containing tabs for common words, reading level, and sentiment -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; <span id="current-year"></span> Tanush Garg. All rights reserved.</p>
+    </footer>
+    
+    <!-- Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+    
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+    <script src="js/common.js"></script>
+    <script src="js/text_analysis.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>
