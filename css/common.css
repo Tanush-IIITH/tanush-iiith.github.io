@@ -1,0 +1,263 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Color Palette - Using blue, green, yellow theme */
+:root {
+    /* Theme Colors */
+    --primary-blue: #2c7da0;
+    --secondary-green: #28a745;
+    --accent-yellow: #ffc107;
+    --dark-blue: #184e77;
+    --light-blue: #a9d6e5;
+    --bg-light: #f8f9fa;
+    --card-bg-light: #ffffff;
+    --text-dark: #2b2d42;
+    --text-light: #f0f0f0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: var(--accent-yellow) 3px solid;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
+/* Navigation Styling */
+#main-nav {
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: var(--dark-blue);
+    border-radius: 5px;
+}
+
+#main-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-nav ul li {
+    margin: 0 5px;
+}
+
+#main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+#main-nav ul li a:hover {
+    background-color: var(--secondary-green);
+}
+
+#main-nav ul li a.active {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+/* Enhanced About Me Section */
+.enhanced-about {
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 5px 20px var(--shadow-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-label {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+    text-transform: capitalize;
+}
+
+.accent-line {
+    height: 4px;
+    width: 60px;
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-green));
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Ensure cornerstone text is visible in light mode */
+.cornerstone-text {
+    color: #000000; /* Black text for light mode */
+    font-weight: 500;
+    font-size: 1.1rem; /* Increased font size */
+    line-height: 1.8; /* Adjusted line height for better readability */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: var(--primary-blue);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.theme-toggle:hover {
+    background: var(--secondary-green);
+    transform: translateY(-5px);
+}
+
+.theme-toggle .fa-sun {
+    display: none;
+    font-size: 20px;
+}
+
+.theme-toggle .fa-moon {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.theme-toggle.dark .fa-sun {
+    display: inline-block;
+}
+
+.theme-toggle.dark .fa-moon {
+    display: none;
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+    background-color: #121212;
+    color: var(--text-light);
+    
+    --primary-blue: #1a6985;
+    --secondary-green: #198754;
+    --accent-yellow: #e6b800;
+    --dark-blue: #0e3042;
+    --light-blue: #104e67;
+    --bg-light: #121212;
+    --card-bg-light: #1e1e1e;
+    --shadow-light: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme header {
+    background-color: var(--dark-blue);
+    border-bottom-color: var(--accent-yellow);
+}
+
+body.dark-theme section {
+    background: var(--card-bg-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-theme h2 {
+    color: var(--light-blue);
+}
+
+body.dark-theme h3 {
+    color: var(--accent-yellow);
+}
+
+body.dark-theme .highlight {
+    color: var(--accent-yellow);
+}
+
+/* Dark theme adjustments */
+body.dark-theme .cornerstone-text {
+    color: #e0e0e0; /* Light text for dark mode */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Common responsive adjustments */
+}
+
+@media (max-width: 480px) {
+    /* Mobile responsive adjustments */
+}

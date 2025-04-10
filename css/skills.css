@@ -1,0 +1,214 @@
+/* Technical Skills Page Specific Styles */
+
+.skills-intro {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.skill-category {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.skill-category:nth-child(2) {
+    border-left: 4px solid var(--secondary-green);
+}
+
+.skill-category:nth-child(3) {
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.skill-category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.skill-category-header i {
+    font-size: 2rem;
+    margin-right: 15px;
+    color: var(--primary-blue);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(169, 214, 229, 0.2);
+    border-radius: 50%;
+}
+
+.skill-category:nth-child(2) .skill-category-header i {
+    color: var(--secondary-green);
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.skill-category:nth-child(3) .skill-category-header i {
+    color: var(--accent-yellow);
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.skill-category-header h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skill-item {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category:nth-child(1) .skill-item:hover {
+    border-color: var(--primary-blue);
+    background-color: rgba(44, 125, 160, 0.05);
+}
+
+.skill-category:nth-child(2) .skill-item:hover {
+    border-color: var(--secondary-green);
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+.skill-category:nth-child(3) .skill-item:hover {
+    border-color: var(--accent-yellow);
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon img {
+    transform: scale(1.15);
+}
+
+.skill-category:nth-child(1) .skill-icon {
+    background-color: rgba(169, 214, 229, 0.1);
+}
+
+.skill-category:nth-child(2) .skill-icon {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.skill-category:nth-child(3) .skill-icon {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.skill-text {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.skill-category-content {
+    margin-top: 20px;
+}
+
+.skill-category-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* Dark theme adjustments */
+body.dark-theme .skills-intro {
+    color: var(--text-light);
+}
+
+body.dark-theme .skill-category {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .skill-item {
+    background-color: #333;
+    border-color: #444;
+}
+
+body.dark-theme .skill-text {
+    color: var(--text-light);
+}
+
+body.dark-theme .skill-category-content p {
+    color: var(--text-light);
+}
+
+body.dark-theme .skill-category:nth-child(1) .skill-item:hover {
+    background-color: rgba(26, 105, 133, 0.2);
+}
+
+body.dark-theme .skill-category:nth-child(2) .skill-item:hover {
+    background-color: rgba(25, 135, 84, 0.2);
+}
+
+body.dark-theme .skill-category:nth-child(3) .skill-item:hover {
+    background-color: rgba(230, 184, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-category-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .skill-category-header i {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}

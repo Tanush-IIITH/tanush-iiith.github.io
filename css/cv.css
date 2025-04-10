@@ -1,0 +1,581 @@
+/* CV Page Specific Styles */
+
+/* Update CV page to match education page styling */
+
+.cv-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* CV Header - updated to match education styling */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    border-bottom: none;
+}
+
+.cv-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-green), var(--accent-yellow));
+    border-radius: 2px;
+}
+
+.cv-header-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.cv-header-content p {
+    font-size: 1.1rem;
+    color: var(--dark-blue);
+}
+
+.cv-download-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, var(--secondary-green), #1a7535);
+}
+
+.cv-download-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--primary-blue), 
+        var(--secondary-green), 
+        var(--accent-yellow), 
+        var(--primary-blue));
+    z-index: -1;
+    border-radius: 32px;
+    background-size: 400%;
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.cv-download-btn:hover::before {
+    opacity: 1;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* CV Sections - updated to match education styling */
+.cv-section {
+    margin-bottom: 35px;
+    padding-bottom: 10px;
+}
+
+.cv-section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    position: relative;
+    border-bottom: none;
+}
+
+.cv-section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+    border-radius: 2px;
+}
+
+.cv-section-header i {
+    font-size: 1.5rem;
+    color: var(--primary-blue); /* Changed from accent-yellow to primary-blue */
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(44, 125, 160, 0.15), rgba(169, 214, 229, 0.25));
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cv-section-header h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+/* Redesigned Contact/Personal Information Section - Vertical Layout */
+.cv-contact-grid {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    gap: 12px; /* Reduced gap for vertical layout */
+    margin-top: 15px;
+}
+
+.cv-contact-item {
+    width: 100%; /* Full width for each item */
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    border-left: none;
+}
+
+.cv-contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5px;
+    background: var(--primary-blue);
+    border-radius: 2px 0 0 2px;
+}
+
+.cv-contact-item:nth-child(2)::before {
+    background: var(--secondary-green);
+}
+
+.cv-contact-item:nth-child(3)::before {
+    background: var(--accent-yellow);
+}
+
+.cv-contact-item:nth-child(4)::before {
+    background: var(--primary-blue);
+}
+
+.cv-contact-item:nth-child(5)::before {
+    background: var(--secondary-green);
+}
+
+.cv-contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background-color: #f3f9fc;
+}
+
+.cv-contact-item i {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-right: 15px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.2), rgba(40, 167, 69, 0.1)); /* Changed to green background */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.cv-contact-item span {
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.cv-contact-item .contact-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-contact-item .contact-value {
+    display: block;
+    font-size: 1rem;
+}
+
+/* Dark theme adjustments for the new contact style */
+body.dark-theme .cv-contact-item {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .cv-contact-item:hover {
+    background-color: #333;
+}
+
+body.dark-theme .cv-contact-item .contact-label {
+    color: #aaa;
+}
+
+body.dark-theme .cv-contact-item .contact-value {
+    color: #e0e0e0;
+}
+
+body.dark-theme .cv-contact-item i {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.25), rgba(40, 167, 69, 0.15)); /* Green background for dark mode */
+    color: var(--light-blue);
+}
+
+/* Responsive adjustments for the new contact layout */
+@media (max-width: 767px) {
+    .cv-contact-item {
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Education Timeline */
+.cv-timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-left: 10px;
+}
+
+.cv-timeline:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--light-blue);
+}
+
+.cv-timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+    border-radius: 8px;
+}
+
+.cv-timeline-item:hover {
+    transform: translateY(-5px);
+}
+
+.cv-timeline-dot {
+    position: absolute;
+    left: -38px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue)); /* Changed from yellow to blue */
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(169, 214, 229, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cv-timeline-item:hover .cv-timeline-dot {
+    background: linear-gradient(135deg, var(--secondary-green), #86d29b);
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.2);
+}
+
+.cv-timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.cv-timeline-content h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 0 0 3px 0;
+}
+
+.cv-timeline-content h6 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--dark-blue);
+    margin: 0 0 8px 0;
+}
+
+.cv-date {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+    padding: 3px 12px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Skills Styling - updated to match education styling */
+.cv-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cv-skill-category {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.cv-skill-category:nth-child(2) {
+    border-left-color: var(--secondary-green);
+}
+
+.cv-skill-category:nth-child(3) {
+    border-left-color: var(--accent-yellow);
+}
+
+.cv-skill-category:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cv-skill-category h5 {
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+    color: var(--primary-blue);
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.cv-skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cv-skill-tag {
+    background: linear-gradient(135deg, var(--light-blue), rgba(169, 214, 229, 0.7));
+    color: var(--dark-blue);
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.cv-skill-tag:hover {
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px) scale(1.05);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger the animations */
+.cv-skill-tag:nth-child(1) { animation-delay: 0.1s; }
+.cv-skill-tag:nth-child(2) { animation-delay: 0.2s; }
+.cv-skill-tag:nth-child(3) { animation-delay: 0.3s; }
+.cv-skill-tag:nth-child(4) { animation-delay: 0.4s; }
+.cv-skill-tag:nth-child(5) { animation-delay: 0.5s; }
+.cv-skill-tag:nth-child(6) { animation-delay: 0.6s; }
+
+/* Achievement List - updated to match education styling */
+.cv-achievement-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cv-achievement-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: baseline;
+    transition: all 0.3s ease;
+}
+
+.cv-achievement-list li:hover {
+    transform: translateX(5px);
+}
+
+.achievement-bullet {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue)); /* Changed from yellow to blue gradient */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 2px rgba(44, 125, 160, 0.15); /* Updated shadow color to match blue */
+}
+
+.cv-achievement-list li:hover .achievement-bullet {
+    background-color: var(--secondary-green);
+    transform: scale(1.2);
+}
+
+.achievement-content {
+    flex: 1;
+}
+
+.achievement-content strong {
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+/* Dark Theme Adjustments - updated to match education styling */
+body.dark-theme .cv-container {
+    background: linear-gradient(to bottom right, #1e1e1e, #252525);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .cv-header-content h3 {
+    color: var(--accent-yellow);
+}
+
+body.dark-theme .cv-header-content p {
+    color: #e0e0e0;
+}
+
+body.dark-theme .cv-section-header h4 {
+    color: var(--accent-yellow);
+}
+
+body.dark-theme .cv-section-header i {
+    background: linear-gradient(135deg, rgba(26, 105, 133, 0.3), rgba(16, 78, 103, 0.5));
+    color: var(--light-blue); /* Changed from accent-yellow to light-blue for dark mode */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .cv-timeline-content h5 {
+    color: var(--light-blue);
+}
+
+body.dark-theme .cv-timeline-content h6 {
+    color: var(--secondary-green);
+}
+
+body.dark-theme .cv-timeline-content p,
+body.dark-theme .achievement-content,
+body.dark-theme .cv-contact-item span {
+    color: #ffffff;
+}
+
+body.dark-theme .cv-contact-item {
+    background-color: rgba(42, 42, 42, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .cv-skill-category {
+    background: linear-gradient(to right, #2a2a2a, #252525);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .cv-skill-category h5 {
+    color: var(--accent-yellow);
+    border-bottom-color: #444;
+}
+
+body.dark-theme .cv-timeline-dot {
+    background: linear-gradient(135deg, var(--primary-blue), var(--light-blue)); /* Changed to blue gradient */
+    border-color: #1e1e1e;
+    box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.2); /* Updated shadow color */
+}
+
+body.dark-theme .cv-timeline-item:hover .cv-timeline-dot {
+    background: linear-gradient(135deg, var(--secondary-green), #86d29b);
+}
+
+body.dark-theme .cv-timeline-item {
+    background: linear-gradient(to right, rgba(50, 50, 50, 0.5), rgba(40, 40, 40, 0.2));
+}
+
+body.dark-theme .cv-contact-item i {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.25), rgba(40, 167, 69, 0.15)); /* Green background for dark mode */
+    color: var(--light-blue);
+}
+
+body.dark-theme .cv-skill-tag {
+    background: linear-gradient(135deg, #333, #444);
+    color: #e0e0e0;
+}
+
+body.dark-theme .cv-skill-tag:hover {
+    background: linear-gradient(135deg, var(--accent-yellow), #e6b800);
+    color: #222;
+}
+
+body.dark-theme .achievement-content strong {
+    color: var(--secondary-green);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cv-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .cv-contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-timeline-header {
+        flex-direction: column;
+    }
+    
+    .cv-date {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+}

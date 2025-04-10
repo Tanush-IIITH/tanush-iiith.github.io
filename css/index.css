@@ -1,0 +1,330 @@
+/* Index Page Specific Styles */
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.profile-picture-wrapper {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-picture {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+}
+
+.profile-picture img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    border: 5px solid white;
+}
+
+.profile-picture img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.profile-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.badge {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.badge.blue {
+    background-color: var(--primary-blue);
+}
+
+.badge.green {
+    background-color: var(--secondary-green);
+}
+
+.badge.yellow {
+    background-color: var(--accent-yellow);
+    color: white; /* Make text white */
+}
+
+.about-intro {
+    margin-bottom: 25px;
+}
+
+.large-text {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.key-interests {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.key-interests h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.interest-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.interest-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.interest-item i {
+    color: var(--secondary-green);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.interest-item:nth-child(1) i {
+    color: var(--primary-blue);
+}
+
+.interest-item:nth-child(2) i {
+    color: var(--secondary-green);
+}
+
+.interest-item:nth-child(3) i {
+    color: var(--accent-yellow);
+}
+
+.interest-item:nth-child(4) i {
+    color: var(--primary-blue);
+}
+
+/* Interest item hover effects */
+.interest-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interest-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Role styles - change innovator text color to white */
+.innovator h3,
+.innovator-text,
+.innovator .role-description {
+    color: white !important;
+}
+
+/* Contact Section Styling */
+#contact {
+    margin-top: 50px;
+    background-color: var(--card-bg-light);
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 5px 20px var(--shadow-light);
+}
+
+#contact .section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#contact .section-header h2 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+#contact .accent-line {
+    height: 4px;
+    width: 60px;
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-green));
+    margin: 0 auto;
+    border-radius: 2px;
+    margin-bottom: 25px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-yellow);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-light);
+}
+
+.contact-list {
+    list-style-type: none;
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.contact-icon {
+    width: 24px;
+    margin-right: 10px;
+    color: var(--secondary-green);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-list li:hover .contact-icon {
+    transform: scale(1.2);
+    color: var(--primary-blue);
+}
+
+.contact-list a {
+    color: var(--dark-blue);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px dotted transparent;
+    padding-bottom: 2px;
+}
+
+.contact-list a:hover {
+    color: var(--primary-blue);
+    border-bottom: 1px solid var(--secondary-green);
+    transform: translateX(3px);
+}
+
+.contact-list a:visited {
+    color: var(--dark-blue);
+}
+
+.contact-list a:active {
+    color: var(--accent-yellow);
+}
+
+/* Dark Theme Adjustments */
+body.dark-theme .interest-item {
+    background-color: #333;
+}
+
+body.dark-theme .key-interests {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme #contact {
+    background: var(--card-bg-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-theme .contact-container {
+    background-color: #2a2a2a;
+    border-left: 4px solid var(--accent-yellow);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .contact-icon {
+    color: var(--secondary-green);
+}
+
+body.dark-theme .contact-list li:hover .contact-icon {
+    color: var(--accent-yellow);
+}
+
+body.dark-theme .contact-list a {
+    color: var(--light-blue);
+}
+
+body.dark-theme .contact-list a:hover {
+    color: var(--accent-yellow);
+}
+
+body.dark-theme .contact-list a:visited {
+    color: var(--light-blue);
+}
+
+/* Dark theme adjustments */
+body.dark-theme .interest-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .badge:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+    
+    .profile-picture-wrapper {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,279 @@
+/* Birthplace Page Specific Styles */
+
+.birthplace-intro {
+    margin-bottom: 30px;
+}
+
+/* Birthplace Locations Styling */
+.birthplace-locations {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.location-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    max-width: 100%; /* Change from 800px to full width */
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.location-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Alternating border colors - only yellow, green, and blue */
+.location-item:nth-child(3n+1) {
+    border-left: 4px solid var(--primary-blue);
+    border-top: none;
+}
+
+.location-item:nth-child(3n+2) {
+    border-left: 4px solid var(--secondary-green);
+    border-top: none;
+}
+
+.location-item:nth-child(3n+3) {
+    border-left: 4px solid var(--accent-yellow);
+    border-top: none;
+}
+
+.location-header {
+    margin-bottom: 8px; /* Decreased from 15px */
+}
+
+.location-header h4 {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    margin-bottom: 2px; /* Decreased from 5px */
+    padding-bottom: 3px; /* Decreased from 5px */
+    border-bottom: 1px solid #eee;
+}
+
+.location-content-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 5px; /* Add a small top margin */
+}
+
+/* Alternating image positions */
+.location-item:nth-child(even) .location-content-wrapper {
+    flex-direction: row-reverse;
+}
+
+.location-image {
+    width: 250px;
+    min-width: 250px;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.location-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.location-item:hover .location-image img {
+    transform: scale(1.05);
+}
+
+.location-content {
+    flex: 1;
+}
+
+.location-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Academic journey text color adjustment for better visibility */
+.academic-journey p, 
+.academic-journey li,
+.academic-journey .location-content p {
+    color: #333333; /* Darker text color for better visibility in light mode */
+    font-weight: 400; /* Slightly bolder for better readability */
+}
+
+/* Ensure academic journey headers are also visible */
+.academic-journey h3,
+.academic-journey h4 {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Locations Grid Styling - Vertical layout */
+.important-locations {
+    margin-top: 30px;
+}
+
+.important-locations h3 {
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.locations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+    width: 100%; /* Ensure full width */
+}
+
+/* Special Mention Section */
+.special-mention {
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--accent-yellow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.special-mention:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.special-mention h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.special-mention p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.special-mention-images {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.special-mention-image {
+    flex: 1;
+    min-width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    height: 200px;
+}
+
+.special-mention-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.special-mention-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Make the text above School Education more visible in light mode */
+.location-item .location-content p,
+.birthplace-intro p,
+.education-intro p {
+    color: #333333; /* Darker text color for better visibility */
+    font-weight: 400; /* Slightly bolder for better readability */
+}
+
+/* Ensure all section headers are visible */
+.location-item h3,
+.birthplace-intro h3,
+.education-intro h3 {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Dark theme adjustments */
+body.dark-theme .location-item {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .location-item h4 {
+    color: var(--accent-yellow);
+}
+
+/* Ensure academic journey text is visible in dark mode */
+body.dark-theme .academic-journey p,
+body.dark-theme .academic-journey li,
+body.dark-theme .academic-journey .location-content p {
+    color: #e0e0e0; /* Light text color for dark mode */
+}
+
+body.dark-theme .special-mention {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .special-mention h3 {
+    color: var(--accent-yellow);
+}
+
+/* Dark theme text color adjustments */
+body.dark-theme .location-content p,
+body.dark-theme .birthplace-intro p,
+body.dark-theme .education-intro p,
+body.dark-theme .location-item p,
+body.dark-theme .special-mention p {
+    color: #ffffff; /* Change from grey to white for better visibility */
+}
+
+body.dark-theme .detail-value,
+body.dark-theme .achievement-content,
+body.dark-theme .location-description {
+    color: #ffffff;
+}
+
+/* Ensure special mention and location items have the same width */
+.special-mention, .location-item {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .locations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .special-mention-images {
+        flex-direction: column;
+    }
+    
+    .special-mention-image {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .location-content-wrapper, 
+    .location-item:nth-child(even) .location-content-wrapper {
+        flex-direction: column;
+    }
+    
+    .location-image {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .location-header {
+        text-align: center;
+    }
+}
