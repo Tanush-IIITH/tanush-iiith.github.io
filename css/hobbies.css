@@ -10,6 +10,15 @@
     margin-bottom: 15px;
 }
 
+/* Set the same animation timing for all hobby items */
+.hobby-item[data-category="reading"],
+.hobby-item[data-category="music"],
+.hobby-item[data-category="documentary"],
+.hobby-item[data-category="badminton"],
+.hobby-item[data-category="gaming"] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .hobby-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -678,7 +687,7 @@ body.dark-theme .hobby-item.games-box h3 {
     padding: 15px;
     border-radius: 8px;
     font-size: 1rem;
-    border-left: 3px solid var(--accent-yellow);
+    border-left: 3px solid var (--accent-yellow);
 }
 
 .game-notes i {

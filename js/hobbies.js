@@ -52,6 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'scale(1)';
         });
     });
+
+    // Standardize animation duration for all hobby categories
+    const animationDuration = 0.3; // in seconds
+
+    // Update animation durations for all hobby categories
+    document.querySelectorAll('.hobby-item').forEach(item => {
+        // Set consistent animation/transition duration for all hobby items
+        item.style.transitionDuration = `${animationDuration}s`;
+    });
 });
 
 // Enhanced Games Showcase Functionality
