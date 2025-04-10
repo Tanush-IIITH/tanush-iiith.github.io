@@ -1,129 +1,144 @@
 /**
- * User Interaction Analytics
- * Tracks and logs user interactions (clicks and page views) across the website
+ * Simple analytics tracking for the website
+ * Records page visits and user interactions
  */
 
-// Initialize analytics when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Track the initial page view when the page loads
-    logEvent('view', 'page', document.title);
+    // Initialize analytics
+    console.log('Analytics initialized at: ' + getFormattedTimestamp());
     
-    // Set up click tracking for all elements
+    // Track page view
+    trackPageView();
+    
+    // Track clicks on all interactive elements
     setupClickTracking();
 });
 
 /**
- * Sets up click event listeners across the entire document
+ * Get current timestamp in ISO format: YYYY-MM-DD HH:MM:SS
+ * @returns {string} Formatted timestamp
+ */
+function getFormattedTimestamp() {
+    const now = new Date();
+    
+    // Format: YYYY-MM-DD HH:MM:SS
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+/**
+ * Track a page view with the current URL
+ */
+function trackPageView() {
+    const pageData = {
+        url: window.location.href,
+        title: document.title,
+        timestamp: getFormattedTimestamp(),
+        referrer: document.referrer || 'direct'
+    };
+    
+    console.log('Page viewed:', pageData);
+    // In a real implementation, you would send this data to a server
+    // sendAnalyticsData('pageview', pageData);
+}
+
+/**
+ * Set up click tracking for interactive elements
  */
 function setupClickTracking() {
+    // Track clicks on links, buttons, and other interactive elements
     document.addEventListener('click', function(event) {
-        const target = event.target;
+        // Find the closest clickable element
+        const clickedElement = event.target.closest('a, button, .clickable, [role="button"]');
         
-        // Determine the type of element that was clicked
-        let elementType = determineElementType(target);
+        if (clickedElement) {
+            const clickData = {
+                element: getElementDescription(clickedElement),
+                timestamp: getFormattedTimestamp(),
+                path: getElementPath(clickedElement)
+            };
+            
+            console.log('Element clicked:', clickData);
+            // In a real implementation, you would send this data to a server
+            // sendAnalyticsData('click', clickData);
+        }
+    });
+    
+    // Modify the existing click tracking to include timestamps
+    document.addEventListener('click', function(event) {
+        // Get the clicked element
+        const clickedElement = event.target;
         
-        // Get any relevant identifier for the element
-        let elementIdentifier = getElementIdentifier(target);
+        // Extract element information for tracking
+        const elementInfo = {
+            tag: clickedElement.tagName,
+            id: clickedElement.id || 'none',
+            class: clickedElement.className || 'none',
+            text: clickedElement.innerText?.substring(0, 20) || 'none',
+            timestamp: getFormattedTimestamp()
+        };
         
-        // Log the click event
-        logEvent('click', elementType, elementIdentifier);
+        // Log the click with timestamp for analytics
+        console.log('Click tracked:', elementInfo);
+        
+        // Your existing analytics tracking code
+        // ...existing tracking code...
     });
 }
 
 /**
- * Determines the type of element that was interacted with
- * @param {HTMLElement} element - The DOM element
- * @return {string} The determined element type
+ * Get a description of the clicked element
+ * @param {HTMLElement} element - The clicked element
+ * @returns {object} Element description
  */
-function determineElementType(element) {
-    // Check for common interactive elements
-    if (element.tagName === 'A') return 'link';
-    if (element.tagName === 'BUTTON') return 'button';
-    if (element.tagName === 'IMG') return 'image';
-    if (element.tagName === 'INPUT') {
-        return element.type + '-input'; // e.g., "text-input", "checkbox-input"
-    }
-    if (element.tagName === 'SELECT') return 'dropdown';
-    if (element.tagName === 'TEXTAREA') return 'textarea';
-    
-    // Check for navigation items
-    if (element.closest('nav')) return 'navigation-item';
-    
-    // Check for common content elements
-    if (element.tagName === 'H1' || element.tagName === 'H2' || 
-        element.tagName === 'H3' || element.tagName === 'H4' || 
-        element.tagName === 'H5' || element.tagName === 'H6') return 'heading';
-    if (element.tagName === 'P') return 'paragraph';
-    
-    // Check for common UI components by class
-    if (element.closest('.theme-toggle')) return 'theme-toggle';
-    if (element.closest('.carousel-btn')) return 'carousel-button';
-    
-    // If the element itself doesn't match but it's a child of a button or link
-    if (element.closest('button')) return 'button';
-    if (element.closest('a')) return 'link';
-    
-    // Default to the element's tag name if no specific type is determined
-    return element.tagName.toLowerCase() || 'unknown-element';
+function getElementDescription(element) {
+    return {
+        tag: element.tagName.toLowerCase(),
+        id: element.id || null,
+        classes: Array.from(element.classList).join(' ') || null,
+        text: element.innerText?.trim().substring(0, 50) || null,
+        href: element.href || null
+    };
 }
 
 /**
- * Gets an identifier for the element to make logging more meaningful
- * @param {HTMLElement} element - The DOM element
- * @return {string} An identifier for the element
+ * Get the DOM path of an element
+ * @param {HTMLElement} element - The element
+ * @returns {string} DOM path
  */
-function getElementIdentifier(element) {
-    // Try to get the most meaningful identifier in descending order of specificity
-    if (element.id) return '#' + element.id;
-    if (element.className && typeof element.className === 'string' && element.className.trim() !== '') 
-        return '.' + element.className.split(' ')[0];
-    if (element.alt) return 'alt: ' + truncateText(element.alt);
-    if (element.title) return 'title: ' + truncateText(element.title);
-    if (element.textContent) return 'text: ' + truncateText(element.textContent);
+function getElementPath(element) {
+    let path = [];
+    let currentElement = element;
     
-    // For links and buttons, try to get text content
-    if (element.tagName === 'A' || element.tagName === 'BUTTON') {
-        const text = element.textContent.trim();
-        if (text) return text;
-        if (element.href) return element.href;
+    while (currentElement && currentElement !== document.body) {
+        let selector = currentElement.tagName.toLowerCase();
+        
+        if (currentElement.id) {
+            selector += `#${currentElement.id}`;
+        } else if (currentElement.className) {
+            selector += `.${Array.from(currentElement.classList).join('.')}`;
+        }
+        
+        path.unshift(selector);
+        currentElement = currentElement.parentElement;
     }
     
-    // For inputs, use name, placeholder or type
-    if (element.tagName === 'INPUT') {
-        if (element.name) return element.name;
-        if (element.placeholder) return element.placeholder;
-        return element.type || 'input';
-    }
-    
-    // Fallback to position in parent
-    const parent = element.parentElement;
-    if (parent) {
-        const children = Array.from(parent.children);
-        const index = children.indexOf(element);
-        return `${element.tagName.toLowerCase()}[${index}] in ${parent.tagName.toLowerCase()}`;
-    }
-    
-    return 'unnamed-element';
+    return path.join(' > ');
 }
 
 /**
- * Truncates text to a reasonable length for logging
- * @param {string} text - The text to truncate
- * @param {number} maxLength - Maximum length
- * @return {string} Truncated text
+ * Send analytics data to a server (placeholder function)
+ * @param {string} eventType - Type of event
+ * @param {object} data - Event data
  */
-function truncateText(text, maxLength = 30) {
-    text = text.trim();
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-}
-
-/**
- * Logs an event to the console in the specified format
- * @param {string} eventType - Type of event (click, view)
- * @param {string} objectType - Type of object interacted with
- * @param {string} objectIdentifier - Identifier for the object
- */
-function logEvent(eventType, objectType, objectIdentifier) {
-    const timestamp = new Date().toISOString();
-    console.log(`${timestamp}, ${eventType}, ${objectType}: ${objectIdentifier}`);
+function sendAnalyticsData(eventType, data) {
+    // This would be implemented to send data to your analytics server
+    // For now, we just log to console
+    console.log(`Analytics event (${eventType}):`, data);
 }

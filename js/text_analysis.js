@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clear-btn');
     const sampleBtn = document.getElementById('sample-btn');
     const pronounCountContainer = document.getElementById('pronoun-count-container');
+    const prepositionCountContainer = document.getElementById('preposition-count-container');
+    const articleCountContainer = document.getElementById('article-count-container');
     
     // Analysis result elements
     const wordCountEl = document.getElementById('word-count');
@@ -21,6 +23,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const symbolCountEl = document.getElementById('symbol-count');
     const sentenceCountEl = document.getElementById('sentence-count');
     const paragraphCountEl = document.getElementById('paragraph-count');
+    
+    // Lists of words to analyze - corrected pronoun list
+    const pronouns = [
+        // Personal pronouns
+        'i', 'me', 'my', 'mine', 'myself', 
+        'you', 'your', 'yours', 'yourself', 'yourselves',
+        'he', 'him', 'his', 'himself',
+        'she', 'her', 'hers', 'herself',
+        'it', 'its', 'itself',
+        'we', 'us', 'our', 'ours', 'ourselves',
+        'they', 'them', 'their', 'theirs', 'themselves',
+        
+        // Demonstrative pronouns
+        'this', 'that', 'these', 'those',
+        
+        // Interrogative pronouns
+        'who', 'whom', 'whose', 'which', 'what',
+        
+        // Relative pronouns - note 'that' is already included above
+        'who', 'whom', 'whose', 'which',
+        
+        // Indefinite pronouns
+        'anybody', 'anyone', 'anything', 'each', 'either', 'everybody', 
+        'everyone', 'everything', 'neither', 'nobody', 'nothing', 
+        'one', 'somebody', 'someone', 'something', 
+        'both', 'few', 'several', 'all', 'any', 'some', 'none'
+    ];
+    
+    // Remove duplicates from the pronouns list
+    const uniquePronouns = [...new Set(pronouns)];
+
+    const prepositions = [
+        'about', 'above', 'across', 'after', 'against', 'along', 'amid', 'among', 
+        'around', 'as', 'at', 'before', 'behind', 'below', 'beneath', 'beside', 
+        'between', 'beyond', 'by', 'concerning', 'considering', 'despite', 'down', 
+        'during', 'except', 'for', 'from', 'in', 'inside', 'into', 'like', 'near', 
+        'of', 'off', 'on', 'onto', 'out', 'outside', 'over', 'past', 'regarding', 
+        'round', 'since', 'through', 'throughout', 'to', 'toward', 'towards', 
+        'under', 'underneath', 'until', 'unto', 'up', 'upon', 'with', 'within', 'without'
+    ];
+    
+    const indefiniteArticles = ['a', 'an', 'the'];
     
     // Event listeners
     clearBtn.addEventListener('click', clearText);
@@ -56,9 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
         symbolCountEl.textContent = charDetails.specialSymbols;
         sentenceCountEl.textContent = sentenceCount;
         paragraphCountEl.textContent = paragraphCount;
-
-        // Update pronoun analysis
-        updatePronounAnalysis(text);
+        
+        // Tokenize text and analyze word groups
+        const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+        countWordGroup(words, uniquePronouns, pronounCountContainer, 'pronoun');
+        countWordGroup(words, prepositions, prepositionCountContainer, 'preposition');
+        countWordGroup(words, indefiniteArticles, articleCountContainer, 'article');
     }
     
     // Helper functions for text analysis
@@ -102,83 +149,43 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // New function to analyze pronouns
-    function updatePronounAnalysis(text) {
-        // Define pronoun categories and their words
-        const pronounCategories = {
-            'Personal': ['i', 'me', 'my', 'mine', 'myself', 
-                        'you', 'your', 'yours', 'yourself', 'yourselves',
-                        'he', 'him', 'his', 'himself',
-                        'she', 'her', 'hers', 'herself',
-                        'it', 'its', 'itself',
-                        'we', 'us', 'our', 'ours', 'ourselves',
-                        'they', 'them', 'their', 'theirs', 'themselves'],
-            'Demonstrative': ['this', 'that', 'these', 'those'],
-            'Interrogative': ['who', 'whom', 'whose', 'which', 'what'],
-            'Relative': ['who', 'whom', 'whose', 'which', 'that'],
-            'Indefinite': ['anybody', 'anyone', 'anything', 'each', 'either', 'everybody', 
-                          'everyone', 'everything', 'neither', 'nobody', 'no one', 'nothing', 
-                          'one', 'somebody', 'someone', 'something', 'both', 'few', 'many', 
-                          'several', 'all', 'any', 'most', 'none', 'some']
-        };
+    // Function to count words from a specific group
+    function countWordGroup(words, wordList, containerElement, type) {
+        // Create word frequency map
+        const wordCounts = {};
+        let totalCount = 0;
         
-        // Convert text to lowercase and tokenize by splitting on non-word characters
-        const words = text.toLowerCase().split(/\W+/).filter(word => word.length > 0);
-        
-        // Initialize pronoun counts
-        const pronounCounts = {};
-        let totalPronouns = 0;
-        
-        // Count pronouns by category
-        for (const category in pronounCategories) {
-            pronounCounts[category] = {};
-            const pronounsInCategory = pronounCategories[category];
-            
-            words.forEach(word => {
-                if (pronounsInCategory.includes(word.toLowerCase())) {
-                    // Increment count for specific pronoun
-                    pronounCounts[category][word] = (pronounCounts[category][word] || 0) + 1;
-                    totalPronouns++;
-                }
-            });
-        }
+        words.forEach(word => {
+            if (wordList.includes(word)) {
+                wordCounts[word] = (wordCounts[word] || 0) + 1;
+                totalCount++;
+            }
+        });
         
         // Display results
-        if (totalPronouns > 0) {
-            let html = '';
-            
-            // Generate HTML for each category that has pronouns
-            for (const category in pronounCounts) {
-                const categoryPronouns = pronounCounts[category];
-                const pronounsFound = Object.keys(categoryPronouns).length;
+        if (totalCount > 0) {
+            // Sort by frequency (descending)
+            const sortedWords = Object.entries(wordCounts)
+                .sort((a, b) => b[1] - a[1]);
                 
-                if (pronounsFound > 0) {
-                    html += `<div class="pronoun-category">
-                              <span class="pronoun-category-name">${category}:</span>
-                              <div class="pronoun-list">`;
-                    
-                    // Add each pronoun with its count
-                    Object.entries(categoryPronouns)
-                        .sort((a, b) => b[1] - a[1]) // Sort by count (descending)
-                        .forEach(([pronoun, count]) => {
-                            html += `<div class="pronoun-item">
-                                      <span class="pronoun-word">${pronoun}</span>
-                                      <span class="pronoun-count">${count}</span>
-                                    </div>`;
-                        });
-                    
-                    html += `</div></div>`;
-                }
-            }
+            let html = '';
+            sortedWords.forEach(([word, count]) => {
+                html += `
+                    <div class="${type}-item">
+                        <span class="${type}-word">${word}</span>
+                        <span class="${type}-count">${count}</span>
+                    </div>
+                `;
+            });
             
-            pronounCountContainer.innerHTML = html;
+            containerElement.innerHTML = html;
         } else {
-            // Better formatted "No pronouns detected" message
-            pronounCountContainer.innerHTML = `
-                <div class="empty-pronoun-container">
+            containerElement.innerHTML = `
+                <div class="empty-${type}-container">
                     <i class="fas fa-search"></i>
-                    <p class="no-data-msg">No pronouns detected</p>
-                </div>`;
+                    <p class="no-data-msg">No ${type}s detected</p>
+                </div>
+            `;
         }
     }
     
@@ -198,13 +205,34 @@ document.addEventListener('DOMContentLoaded', function() {
         symbolCountEl.textContent = '0';
         sentenceCountEl.textContent = '0';
         paragraphCountEl.textContent = '0';
-
-        // Reset pronoun count with better formatted message
-        pronounCountContainer.innerHTML = `
-            <div class="empty-pronoun-container">
-                <i class="fas fa-search"></i>
-                <p class="no-data-msg">No pronouns detected</p>
-            </div>`;
+        
+        // Reset word group counts
+        if (pronounCountContainer) {
+            pronounCountContainer.innerHTML = `
+                <div class="empty-pronoun-container">
+                    <i class="fas fa-search"></i>
+                    <p class="no-data-msg">No pronouns detected</p>
+                </div>
+            `;
+        }
+        
+        if (prepositionCountContainer) {
+            prepositionCountContainer.innerHTML = `
+                <div class="empty-preposition-container">
+                    <i class="fas fa-search"></i>
+                    <p class="no-data-msg">No prepositions detected</p>
+                </div>
+            `;
+        }
+        
+        if (articleCountContainer) {
+            articleCountContainer.innerHTML = `
+                <div class="empty-article-container">
+                    <i class="fas fa-search"></i>
+                    <p class="no-data-msg">No articles detected</p>
+                </div>
+            `;
+        }
     }
     
     function loadSampleText() {

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Analysis - Tanush Garg</title>
+    <!-- Updated favicon path -->
+    <link rel="icon" href="images/favicon.jpeg" type="image/jpeg">
+    <link rel="shortcut icon" href="images/favicon.jpeg" type="image/jpeg">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/text_analysis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -90,16 +93,53 @@
                             </div>
                         </div>
                         
-                        <!-- New Pronoun Count Card -->
+                        <!-- Pronoun Count Card -->
                         <div class="result-card pronoun-count">
                             <div class="result-icon">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="result-data">
                                 <h4>Pronoun Analysis</h4>
-                                <div id="pronoun-count-container" class="char-metrics-vertical">
+                                <div id="pronoun-count-container" class="word-analysis-container">
                                     <!-- Pronoun counts will be inserted here by JavaScript -->
-                                    <p class="no-data-msg">No pronouns detected</p>
+                                    <div class="empty-pronoun-container">
+                                        <i class="fas fa-search"></i>
+                                        <p class="no-data-msg">No pronouns detected</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Preposition Count Card -->
+                        <div class="result-card preposition-count">
+                            <div class="result-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Preposition Analysis</h4>
+                                <div id="preposition-count-container" class="word-analysis-container">
+                                    <!-- Preposition counts will be inserted here by JavaScript -->
+                                    <div class="empty-preposition-container">
+                                        <i class="fas fa-search"></i>
+                                        <p class="no-data-msg">No prepositions detected</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Article Count Card -->
+                        <div class="result-card article-count">
+                            <div class="result-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <div class="result-data">
+                                <h4>Article Analysis</h4>
+                                <div id="article-count-container" class="word-analysis-container">
+                                    <!-- Article counts will be inserted here by JavaScript -->
+                                    <div class="empty-article-container">
+                                        <i class="fas fa-search"></i>
+                                        <p class="no-data-msg">No articles detected</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -161,6 +161,17 @@
     background-color: rgba(233, 30, 99, 0.1);
 }
 
+/* Add styling for icons */
+.article-count .result-icon {
+    color: #FF5722;
+    background-color: rgba(255, 87, 34, 0.1);
+}
+
+.preposition-count .result-icon {
+    color: #3F51B5;
+    background-color: rgba(63, 81, 181, 0.1);
+}
+
 .result-data h4 {
     margin: 0 0 0.3rem 0;
     font-size: 0.9rem;
@@ -225,6 +236,8 @@
     margin: 0;
     font-size: 0.9rem;
     text-align: center;
+    font-style: italic;
+    color: var(--text-color-muted);
 }
 
 .pronoun-category-name {
@@ -251,6 +264,86 @@
 
 .pronoun-count {
     font-weight: 600;
+}
+
+/* Preposition styling */
+.preposition-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 0.1rem 0;
+}
+
+.preposition-word {
+    font-style: italic;
+}
+
+.preposition-count {
+    font-weight: 600;
+}
+
+.empty-preposition-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--text-color-muted);
+    width: 100%;
+}
+
+.empty-preposition-container i {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+.empty-preposition-container .no-data-msg {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color-muted);
+}
+
+/* Article styling */
+.article-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 0.1rem 0;
+}
+
+.article-word {
+    font-style: italic;
+}
+
+.article-count {
+    font-weight: 600;
+}
+
+.empty-article-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--text-color-muted);
+    width: 100%;
+}
+
+.empty-article-container i {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+.empty-article-container .no-data-msg {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color-muted);
 }
 
 /* Detailed results tabs */
@@ -500,4 +593,11 @@ body.dark-mode {
     --accent-color-light: rgba(66, 139, 202, 0.2);
     --accent-color-dark: #5e9ed6;
     --input-bg: #2c2c2c;
+}
+
+/* Word analysis container styling */
+.word-analysis-container {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
