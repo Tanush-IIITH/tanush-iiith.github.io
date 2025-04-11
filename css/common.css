@@ -115,7 +115,13 @@ h3 {
     position: relative;
     overflow: hidden;
     border: none;
+    background-color: rgba(255, 255, 255, 0.85); /* Translucent in light mode */
     box-shadow: 0 5px 20px var(--shadow-light);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .enhanced-about {
+    background-color: rgba(30, 30, 30, 0.6); /* Translucent in dark mode */
 }
 
 .section-header {
@@ -260,4 +266,45 @@ body.dark-theme .cornerstone-text {
 
 @media (max-width: 480px) {
     /* Mobile responsive adjustments */
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.85); /* Translucent white for light mode */
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme section {
+    background-color: rgba(36, 36, 39, 0.6); /* Translucent dark for dark mode */
+}
+
+/* Card and content box general styling */
+.card, .content-box, .timeline-container, .skill-card, .contact-container,
+.profile-container, .hobby-card, .education-item, .project-card {
+    background-color: rgba(255, 255, 255, 0.85); /* Translucent in light mode */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-theme .card, 
+body.dark-theme .content-box, 
+body.dark-theme .timeline-container, 
+body.dark-theme .skill-card, 
+body.dark-theme .contact-container,
+body.dark-theme .profile-container, 
+body.dark-theme .hobby-card, 
+body.dark-theme .education-item, 
+body.dark-theme .project-card {
+    background-color: rgba(36, 36, 39, 0.01); /* Translucent in dark mode */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }

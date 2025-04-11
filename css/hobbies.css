@@ -1368,3 +1368,35 @@ body.dark-theme .carousel-dot.active {
     border-left: none !important;
     border-top: none;
 }
+
+/* Sound toggle button */
+.sound-toggle {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-right: 15px;
+}
+
+.sound-toggle:hover {
+    background: var(--secondary-green);
+    transform: scale(1.1);
+}
+
+.sound-toggle i {
+    font-size: 18px;
+}
+
+.games-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

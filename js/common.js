@@ -15,12 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
         document.body.classList.add('dark-theme');
+        document.body.classList.add('dark-mode'); // Add dark-mode class for background
         themeToggle.classList.add('dark');
     }
     
     // Theme toggle button click handler
     themeToggle.addEventListener('click', function() {
         document.body.classList.toggle('dark-theme');
+        document.body.classList.toggle('dark-mode'); // Toggle dark-mode class for background
         themeToggle.classList.toggle('dark');
         
         // Save preference to localStorage

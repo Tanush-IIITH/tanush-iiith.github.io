@@ -46,7 +46,9 @@
     line-height: 1.5;
     resize: vertical;
     transition: border-color 0.2s ease;
-}
+    box-shadow: var(--box-shadow-light);
+    box-shadow:#2c2c2c 0px 0px 1px 0px;
+}   
 
 #text-input:focus {
     outline: none;

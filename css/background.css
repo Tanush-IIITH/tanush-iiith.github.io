@@ -1,0 +1,56 @@
+:root {
+  --bg-light: #f5f7fa;
+  --bg-light-image: url('../images/bg_light1.jpg');
+  --bg-dark-image: url('../images/bg_dark.jpg');
+}
+
+body {
+  position: relative;
+  background-color: var(--bg-light);
+  transition: background-color 0.3s ease, background-image 0.3s ease;
+  background-image: var(--bg-light-image);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Light theme overlay for better readability */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
+/* Dark theme */
+body.dark-theme {
+  background-image: var(--bg-dark-image);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Add an overlay in dark mode to ensure text remains readable */
+body.dark-theme::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body, body.dark-theme {
+    background-size: cover;
+  }
+}

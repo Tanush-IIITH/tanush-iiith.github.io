@@ -234,7 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Current position
     let currentIndex = 0;
     
-    // Create indicator dots
+    // Clear existing dots before creating new ones
+    dotsContainer.innerHTML = '';
+    
+    // Create indicator dots - exactly one per game card
     for(let i = 0; i < totalCards; i++) {
         const dot = document.createElement('div');
         dot.classList.add('carousel-dot');
@@ -271,6 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             currentCard.style.opacity = '1';
+            // Play the sound for the newly displayed game
+            playGameSound(currentCard.querySelector('h4').textContent);
         }, 10);
         
         // Update dots
@@ -354,3 +359,250 @@ document.head.insertAdjacentHTML('beforeend', `
 }
 </style>
 `);
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ...existing code...
+
+    // Game carousel functionality
+    const gamesCarousel = document.getElementById('games-carousel');
+    const prevButton = document.getElementById('prev-games');
+    const nextButton = document.getElementById('next-games');
+    const randomButton = document.getElementById('random-game');
+    const dotsContainer = document.getElementById('carousel-dots');
+    
+    // Get all game cards
+    const gameCards = document.querySelectorAll('.game-simple-card');
+    const totalGames = gameCards.length;
+    
+    // Sound functionality
+    const soundEnabled = localStorage.getItem('game-sounds') !== 'disabled';
+    let currentlyPlaying = null;
+    
+    // Game sound mapping
+    const gameSounds = {
+        'Red Dead Redemption': 'rdr.mp3',
+        'Red Dead Redemption 2': 'rdr2.mp3',
+        'GTA Vice City': 'gtavc.mp3',
+        'GTA 5': 'gta5.mp3',
+        'Far Cry 5': 'fc5.mp3',
+        'Far Cry 6': 'fc6.mp3',
+        'AC Mirage': 'acm.mp3',
+        'AC Valhalla': 'acv.mp3',
+        'BGMI': 'bgmi.mp3',
+        'Call of Duty': 'cod.mp3',
+        'Among Us': 'amongus.mp3',
+        'Mystery Game': 'mystery.mp3'
+    };
+    
+    // Create sound toggle button
+    const soundToggle = document.createElement('button');
+    soundToggle.className = 'sound-toggle';
+    soundToggle.innerHTML = soundEnabled ? 
+        '<i class="fas fa-volume-up"></i>' : 
+        '<i class="fas fa-volume-mute"></i>';
+    soundToggle.setAttribute('aria-label', soundEnabled ? 'Mute game sounds' : 'Enable game sounds');
+    soundToggle.setAttribute('title', soundEnabled ? 'Mute game sounds' : 'Enable game sounds');
+    
+    // Add sound toggle to controls
+    document.querySelector('.games-controls').prepend(soundToggle);
+    
+    // Sound toggle functionality
+    soundToggle.addEventListener('click', function() {
+        const newState = localStorage.getItem('game-sounds') !== 'disabled' ? 'disabled' : 'enabled';
+        localStorage.setItem('game-sounds', newState);
+        
+        // Update button appearance
+        if (newState === 'disabled') {
+            this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            this.setAttribute('aria-label', 'Enable game sounds');
+            this.setAttribute('title', 'Enable game sounds');
+            // Stop any playing sound
+            if (currentlyPlaying) {
+                currentlyPlaying.pause();
+                currentlyPlaying.currentTime = 0;
+            }
+        } else {
+            this.innerHTML = '<i class="fas fa-volume-up"></i>';
+            this.setAttribute('aria-label', 'Mute game sounds');
+            this.setAttribute('title', 'Mute game sounds');
+            // Play sound for current game
+            playGameSound(getCurrentGameName());
+        }
+    });
+    
+    // Function to get current visible game name
+    function getCurrentGameName() {
+        // For the single-game view (where cards are displayed or hidden)
+        const visibleCard = document.querySelector('.game-simple-card[style*="display: block"]');
+        if (visibleCard) {
+            return visibleCard.querySelector('h4').textContent;
+        }
+        
+        // Fallback to the scroll position method
+        const visibleGameIndex = currentIndex;
+        const visibleGame = gameCards[visibleGameIndex];
+        if (visibleGame) {
+            return visibleGame.querySelector('h4').textContent;
+        }
+        
+        return null;
+    }
+    
+    // Function to play sound for a specific game
+    function playGameSound(gameName) {
+        if (!gameName || localStorage.getItem('game-sounds') === 'disabled') return;
+        
+        console.log('Playing sound for:', gameName); // Debug log
+        
+        // Stop any currently playing sound
+        if (currentlyPlaying) {
+            currentlyPlaying.pause();
+            currentlyPlaying.currentTime = 0;
+        }
+        
+        // Check if the game has a sound defined
+        if (gameSounds[gameName]) {
+            // Create audio path
+            const audioPath = `audio/${gameSounds[gameName]}`;
+            
+            // Create and play the new sound without fetch check
+            const audio = new Audio(audioPath);
+            audio.volume = 0.5; // Set to 50% volume
+            audio.play().catch(error => {
+                console.log(`Error playing sound: ${error.message}`);
+            });
+            currentlyPlaying = audio;
+        }
+    }
+    
+    // Calculate single card width including margin
+    const cardWidth = gameCards[0].offsetWidth + 20; // 20px for margin
+    let currentIndex = 0;
+    
+    // Ensure correct ordering of games (RDR first, Mystery last)
+    function reorderGames() {
+        const gamesList = Array.from(gameCards);
+        const container = gameCards[0].parentElement;
+        
+        // Find RDR and Mystery Game cards
+        let rdrCard = null;
+        let mysteryCard = null;
+        
+        gamesList.forEach(card => {
+            const title = card.querySelector('h4').textContent;
+            if (title === 'Red Dead Redemption') {
+                rdrCard = card;
+            } else if (title === 'Mystery Game') {
+                mysteryCard = card;
+            }
+        });
+        
+        // If both cards exist, reorder them
+        if (rdrCard && mysteryCard) {
+            // Move RDR to the beginning
+            container.insertBefore(rdrCard, container.firstChild);
+            
+            // Move Mystery to the end
+            container.appendChild(mysteryCard);
+            
+            // Reset current index to ensure we're at the first game
+            currentIndex = 0;
+            
+            // Update the display of all cards
+            gameCards.forEach((card, index) => {
+                card.style.display = index === 0 ? 'block' : 'none';
+            });
+        }
+    }
+    
+    // Call reordering function
+    reorderGames();
+    
+    // Clear existing dots to prevent duplicates
+    dotsContainer.innerHTML = '';
+    
+    // Create dots for carousel - exactly one per game
+    for (let i = 0; i < totalGames; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            goToGame(i);
+        });
+        dotsContainer.appendChild(dot);
+    }
+    
+    function updateDots() {
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function goToGame(index) {
+        currentIndex = index;
+        
+        // Hide all cards first
+        gameCards.forEach(card => {
+            card.style.display = 'none';
+        });
+        
+        // Show only the selected card
+        gameCards[index].style.display = 'block';
+        gameCards[index].style.opacity = '1';
+        
+        // Update scroll position for horizontal layouts
+        gamesCarousel.scrollTo({
+            left: index * cardWidth,
+            behavior: 'smooth'
+        });
+        
+        // Update dots
+        updateDots();
+        
+        // Play sound for the selected game
+        setTimeout(() => {
+            playGameSound(gameCards[index].querySelector('h4').textContent);
+        }, 300); // Small delay to ensure display completes
+    }
+    
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            goToGame(currentIndex - 1);
+        } else {
+            goToGame(totalGames - 1); // Loop to the end
+        }
+    });
+    
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < totalGames - 1) {
+            goToGame(currentIndex + 1);
+        } else {
+            goToGame(0); // Loop to the beginning
+        }
+    });
+    
+    randomButton.addEventListener('click', () => {
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * totalGames);
+        } while (randomIndex === currentIndex && totalGames > 1);
+        
+        goToGame(randomIndex);
+        // Ensure dots are updated after random selection
+        updateDots();
+    });
+    
+    // Detect when scroll ends to play sound
+    let scrollTimeout;
+    gamesCarousel.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            currentIndex = Math.round(gamesCarousel.scrollLeft / cardWidth);
+            updateDots();
+            playGameSound(getCurrentGameName());
+        }, 150);
+    });
+
+    // ...existing code...
+});

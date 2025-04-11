@@ -5,6 +5,11 @@
     flex-wrap: wrap;
     gap: 40px;
     margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.1); /* Very translucent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(3px); /* Slight blur effect for better readability */
 }
 
 .profile-picture-wrapper {
@@ -171,7 +176,7 @@
 /* Contact Section Styling */
 #contact {
     margin-top: 50px;
-    background-color: var(--card-bg-light);
+    background-color: rgba(255, 255, 255, 0.75); /* Translucent for main container */
     padding: 30px;
     border-radius: 10px;
     position: relative;
@@ -206,12 +211,12 @@
     flex-direction: column;
     gap: 30px;
     margin-top: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff; /* Completely opaque white background */
     padding: 25px;
     border-radius: 10px;
     border-left: 4px solid var(--accent-yellow);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .contact-container:hover {
@@ -230,6 +235,11 @@
     padding-left: 0;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.contact-list li:hover {
+    transform: translateX(5px);
 }
 
 .contact-icon {
@@ -278,18 +288,18 @@ body.dark-theme .key-interests {
 }
 
 body.dark-theme #contact {
-    background: var(--card-bg-light);
+    background: rgba(36, 36, 39, 0.6); /* Translucent dark mode for outer container */
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 body.dark-theme .contact-container {
-    background-color: #2a2a2a;
+    background-color: #1e1e1e; /* Fully opaque dark background */
     border-left: 4px solid var(--accent-yellow);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-theme .contact-icon {
-    color: var(--secondary-green);
+    color: var(--accent-yellow);
 }
 
 body.dark-theme .contact-list li:hover .contact-icon {
@@ -315,6 +325,11 @@ body.dark-theme .interest-item:hover {
 
 body.dark-theme .badge:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .profile-container {
+    background-color: rgba(30, 30, 30, 0.3); /* Slightly more opaque in dark mode for readability */
+    backdrop-filter: blur(3px);
 }
 
 /* Responsive adjustments */
