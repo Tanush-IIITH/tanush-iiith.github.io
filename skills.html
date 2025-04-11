@@ -11,206 +11,228 @@
     <link rel="stylesheet" href="css/skills.css">
     <link rel="stylesheet" href="css/background.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-    <header>
-        <div class="header-top">
-        </div>
+    <!-- Enhanced Loading Animation -->
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="loader-text">Tanush Garg</div>
+    </div>
+    
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <header>
+            <div class="header-top">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">About Me</a></li>
+                    <li><a href="birthplace.html">Birthplace</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="skills.html" class="active">Technical Skills</a></li>
+                    <li><a href="text_analysis.html">Text Analysis</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+        </header>
         
-        <nav id="main-nav">
-            <ul>
-                <li><a href="index.html">About Me</a></li>
-                <li><a href="birthplace.html">Birthplace</a></li>
-                <li><a href="hobbies.html">Hobbies</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="skills.html" class="active">Technical Skills</a></li>
-                <li><a href="text_analysis.html">Text Analysis</a></li>
-                <li><a href="cv.html">CV</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section id="skills" class="enhanced-about">
-            <div class="section-header">
-                <span class="section-label">Expertise</span>
-                <h2>Technical Skills</h2>
-                <div class="accent-line"></div>
-            </div>
-            
-            <p class="skills-intro">As a computer science student, I've developed a diverse set of technical skills through coursework, personal projects, and continuous learning.</p>
-            
-            <!-- Skills Categories -->
-            <div class="skills-container">
-                <!-- Programming Languages -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <i class="fas fa-code"></i>
-                        <h3>Programming Languages</h3>
+        <main>
+            <section id="skills" class="enhanced-about">
+                <div class="section-header">
+                    <span class="section-label">Expertise</span>
+                    <h2>Technical Skills</h2>
+                    <div class="accent-line"></div>
+                </div>
+                
+                <p class="skills-intro">As a computer science student, I've developed a diverse set of technical skills through coursework, personal projects, and continuous learning.</p>
+                
+                <!-- Skills Categories -->
+                <div class="skills-container">
+                    <!-- Programming Languages -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        
+                        <div class="skill-category-content">
+                            <p>I'm proficient in multiple programming languages that allow me to develop efficient solutions across different platforms and use cases.</p>
+                            
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/c.png" alt="C">
+                                    </div>
+                                    <span class="skill-text">C</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/c++.png" alt="C++">
+                                    </div>
+                                    <span class="skill-text">C++</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/python.jpeg" alt="Python">
+                                    </div>
+                                    <span class="skill-text">Python</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/js.png" alt="JavaScript">
+                                    </div>
+                                    <span class="skill-text">JavaScript</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/sql.png" alt="SQL">
+                                    </div>
+                                    <span class="skill-text">SQL</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/bash.png" alt="Bash Scripting">
+                                    </div>
+                                    <span class="skill-text">Bash Scripting</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="skill-category-content">
-                        <p>I'm proficient in multiple programming languages that allow me to develop efficient solutions across different platforms and use cases.</p>
+                    <!-- Frameworks and Libraries -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <i class="fas fa-cube"></i>
+                            <h3>Frameworks and Libraries</h3>
+                        </div>
                         
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/c.png" alt="C">
-                                </div>
-                                <span class="skill-text">C</span>
-                            </div>
+                        <div class="skill-category-content">
+                            <p>I leverage these frameworks and libraries to build robust applications.</p>
                             
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/c++.png" alt="C++">
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/fast.png" alt="FastAPI">
+                                    </div>
+                                    <span class="skill-text">FastAPI</span>
                                 </div>
-                                <span class="skill-text">C++</span>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/jinja.png" alt="Jinja">
+                                    </div>
+                                    <span class="skill-text">Jinja</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/numpy.png" alt="NumPy">
+                                    </div>
+                                    <span class="skill-text">NumPy</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/matplotlib.png" alt="Matplotlib">
+                                    </div>
+                                    <span class="skill-text">Matplotlib</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/pandas.png" alt="Pandas">
+                                    </div>
+                                    <span class="skill-text">Pandas</span>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/pygame.jpg" alt="PyGame">
+                                    </div>
+                                    <span class="skill-text">PyGame</span>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools and Technologies -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Tools and Technologies</h3>
+                        </div>
+                        
+                        <div class="skill-category-content">
+                            <p>I'm experienced with these tools and technologies that are essential for modern software development and web applications.</p>
                             
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/python.jpeg" alt="Python">
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/html.png" alt="HTML">
+                                    </div>
+                                    <span class="skill-text">HTML</span>
                                 </div>
-                                <span class="skill-text">Python</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/js.png" alt="JavaScript">
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/css.png" alt="CSS">
+                                    </div>
+                                    <span class="skill-text">CSS</span>
                                 </div>
-                                <span class="skill-text">JavaScript</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/sql.png" alt="SQL">
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/mongodb.png" alt="MongoDB">
+                                    </div>
+                                    <span class="skill-text">MongoDB</span>
                                 </div>
-                                <span class="skill-text">SQL</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/bash.png" alt="Bash Scripting">
+                                
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="images/Skills/mysql.svg" alt="MySQL">
+                                    </div>
+                                    <span class="skill-text">MySQL</span>
                                 </div>
-                                <span class="skill-text">Bash Scripting</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Frameworks and Libraries -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <i class="fas fa-cube"></i>
-                        <h3>Frameworks and Libraries</h3>
-                    </div>
-                    
-                    <div class="skill-category-content">
-                        <p>I leverage these frameworks and libraries to build robust applications.</p>
-                        
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/fast.png" alt="FastAPI">
-                                </div>
-                                <span class="skill-text">FastAPI</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/jinja.png" alt="Jinja">
-                                </div>
-                                <span class="skill-text">Jinja</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/numpy.png" alt="NumPy">
-                                </div>
-                                <span class="skill-text">NumPy</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/matplotlib.png" alt="Matplotlib">
-                                </div>
-                                <span class="skill-text">Matplotlib</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/pandas.png" alt="Pandas">
-                                </div>
-                                <span class="skill-text">Pandas</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/pygame.jpg" alt="PyGame">
-                                </div>
-                                <span class="skill-text">PyGame</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tools and Technologies -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tools and Technologies</h3>
-                    </div>
-                    
-                    <div class="skill-category-content">
-                        <p>I'm experienced with these tools and technologies that are essential for modern software development and web applications.</p>
-                        
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/html.png" alt="HTML">
-                                </div>
-                                <span class="skill-text">HTML</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/css.png" alt="CSS">
-                                </div>
-                                <span class="skill-text">CSS</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/mongodb.png" alt="MongoDB">
-                                </div>
-                                <span class="skill-text">MongoDB</span>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <img src="images/Skills/mysql.svg" alt="MySQL">
-                                </div>
-                                <span class="skill-text">MySQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; <span id="current-year"></span> Tanush Garg. All rights reserved.</p>
-    </footer>
-    
-    <!-- Theme toggle button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Tanush Garg. All rights reserved.</p>
+        </footer>
+        
+        <!-- Theme toggle button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+        
+        <!-- Fullscreen toggle button -->
+        <button id="fullscreen-toggle" class="fullscreen-toggle" aria-label="Toggle fullscreen mode">
+            <i class="fas fa-expand"></i>
+        </button>
+    </div>
     
     <script>
+        // Add loading animation handler
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 1200); // Show loader for slightly longer for better effect
+        });
+        
         document.getElementById("current-year").textContent = new Date().getFullYear();
     </script>
     <!-- <script src="js/theme.js"></script>
@@ -218,5 +240,6 @@
     <script src="js/common.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/analytics.js"></script>
+    <script src="js/fullscreen.js"></script>
 </body>
 </html>

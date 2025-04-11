@@ -9,191 +9,214 @@
     <link rel="shortcut icon" href="images/favicon.jpeg" type="image/jpeg">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/text_analysis.css">
-        <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/background.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-    <header>
-        <div class="header-top">
-        </div>
-        
-        <nav id="main-nav">
-            <ul>
-                <li><a href="index.html">About Me</a></li>
-                <li><a href="birthplace.html">Birthplace</a></li>
-                <li><a href="hobbies.html">Hobbies</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="skills.html">Technical Skills</a></li>
-                <li><a href="text_analysis.html" class="active">Text Analysis</a></li>
-                <li><a href="cv.html">CV</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Enhanced Loading Animation -->
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="loader-text">Tanush Garg</div>
+    </div>
     
-    <main>
-        <section id="text-analysis" class="enhanced-about">
-            <div class="section-header">
-                <span class="section-label">Interactive Tool</span>
-                <h2>Text Analysis</h2>
-                <div class="accent-line"></div>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <header>
+            <div class="header-top">
             </div>
             
-            <p class="tool-intro">This interactive tool demonstrates my programming skills by analyzing text in real-time. Enter or paste any text to get insights about its composition.</p>
-            
-            <div class="analysis-container">
-                <div class="input-section">
-                    <h3>Enter Text</h3>
-                    <textarea id="text-input" placeholder="Enter or paste your text here for analysis..."></textarea>
-                    <div class="action-buttons">
-                        <button id="clear-btn" class="secondary-btn">Clear</button>
-                        <button id="sample-btn" class="secondary-btn">Load Sample</button>
-                    </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">About Me</a></li>
+                    <li><a href="birthplace.html">Birthplace</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="skills.html">Technical Skills</a></li>
+                    <li><a href="text_analysis.html" class="active">Text Analysis</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="text-analysis" class="enhanced-about">
+                <div class="section-header">
+                    <span class="section-label">Interactive Tool</span>
+                    <h2>Text Analysis</h2>
+                    <div class="accent-line"></div>
                 </div>
                 
-                <div class="results-section">
-                    <h3>Analysis Results</h3>
-                    <div class="results-container">
-                        <div class="result-card word-count">
-                            <div class="result-icon">
-                                <i class="fas fa-file-word"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Word Count</h4>
-                                <p id="word-count">0</p>
-                            </div>
-                        </div>
-                        
-                        <div class="result-card char-count">
-                            <div class="result-icon">
-                                <i class="fas fa-font"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Character Count</h4>
-                                <p id="char-count">0</p>
-                                <p id="char-no-spaces" class="sub-count">Without spaces: 0</p>
-                            </div>
-                        </div>
-                        
-                        <div class="result-card sentence-count">
-                            <div class="result-icon">
-                                <i class="fas fa-align-left"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Sentence Count</h4>
-                                <p id="sentence-count">0</p>
-                            </div>
-                        </div>
-                        
-                        <div class="result-card paragraph-count">
-                            <div class="result-icon">
-                                <i class="fas fa-paragraph"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Paragraph Count</h4>
-                                <p id="paragraph-count">0</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Pronoun Count Card -->
-                        <div class="result-card pronoun-count">
-                            <div class="result-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Pronoun Analysis</h4>
-                                <div id="pronoun-count-container" class="word-analysis-container">
-                                    <!-- Pronoun counts will be inserted here by JavaScript -->
-                                    <div class="empty-pronoun-container">
-                                        <i class="fas fa-search"></i>
-                                        <p class="no-data-msg">No pronouns detected</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Preposition Count Card -->
-                        <div class="result-card preposition-count">
-                            <div class="result-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Preposition Analysis</h4>
-                                <div id="preposition-count-container" class="word-analysis-container">
-                                    <!-- Preposition counts will be inserted here by JavaScript -->
-                                    <div class="empty-preposition-container">
-                                        <i class="fas fa-search"></i>
-                                        <p class="no-data-msg">No prepositions detected</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Article Count Card -->
-                        <div class="result-card article-count">
-                            <div class="result-icon">
-                                <i class="fas fa-font"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Article Analysis</h4>
-                                <div id="article-count-container" class="word-analysis-container">
-                                    <!-- Article counts will be inserted here by JavaScript -->
-                                    <div class="empty-article-container">
-                                        <i class="fas fa-search"></i>
-                                        <p class="no-data-msg">No articles detected</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Character breakdown moved to the end -->
-                        <div class="result-card detailed-chars">
-                            <div class="result-icon">
-                                <i class="fas fa-keyboard"></i>
-                            </div>
-                            <div class="result-data">
-                                <h4>Character Breakdown</h4>
-                                <div class="char-metrics-vertical">
-                                    <div class="char-metric-item">
-                                        <span class="metric-label">Letters:</span>
-                                        <span id="letter-count" class="metric-value">0</span>
-                                    </div>
-                                    <div class="char-metric-item">
-                                        <span class="metric-label">Spaces:</span>
-                                        <span id="space-count" class="metric-value">0</span>
-                                    </div>
-                                    <div class="char-metric-item">
-                                        <span class="metric-label">Newlines:</span>
-                                        <span id="newline-count" class="metric-value">0</span>
-                                    </div>
-                                    <div class="char-metric-item">
-                                        <span class="metric-label">Special Symbols:</span>
-                                        <span id="symbol-count" class="metric-value">0</span>
-                                    </div>
-                                </div>
-                            </div>
+                <p class="tool-intro">This interactive tool demonstrates my programming skills by analyzing text in real-time. Enter or paste any text to get insights about its composition.</p>
+                
+                <div class="analysis-container">
+                    <div class="input-section">
+                        <h3>Enter Text</h3>
+                        <textarea id="text-input" placeholder="Enter or paste your text here for analysis..."></textarea>
+                        <div class="action-buttons">
+                            <button id="clear-btn" class="secondary-btn">Clear</button>
+                            <button id="sample-btn" class="secondary-btn">Load Sample</button>
                         </div>
                     </div>
-                    <!-- Removed the detailed-results section containing tabs for common words, reading level, and sentiment -->
+                    
+                    <div class="results-section">
+                        <h3>Analysis Results</h3>
+                        <div class="results-container">
+                            <div class="result-card word-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-file-word"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Word Count</h4>
+                                    <p id="word-count">0</p>
+                                </div>
+                            </div>
+                            
+                            <div class="result-card char-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-font"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Character Count</h4>
+                                    <p id="char-count">0</p>
+                                    <p id="char-no-spaces" class="sub-count">Without spaces: 0</p>
+                                </div>
+                            </div>
+                            
+                            <div class="result-card sentence-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-align-left"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Sentence Count</h4>
+                                    <p id="sentence-count">0</p>
+                                </div>
+                            </div>
+                            
+                            <div class="result-card paragraph-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-paragraph"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Paragraph Count</h4>
+                                    <p id="paragraph-count">0</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Pronoun Count Card -->
+                            <div class="result-card pronoun-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Pronoun Analysis</h4>
+                                    <div id="pronoun-count-container" class="word-analysis-container">
+                                        <!-- Pronoun counts will be inserted here by JavaScript -->
+                                        <div class="empty-pronoun-container">
+                                            <i class="fas fa-search"></i>
+                                            <p class="no-data-msg">No pronouns detected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Preposition Count Card -->
+                            <div class="result-card preposition-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Preposition Analysis</h4>
+                                    <div id="preposition-count-container" class="word-analysis-container">
+                                        <!-- Preposition counts will be inserted here by JavaScript -->
+                                        <div class="empty-preposition-container">
+                                            <i class="fas fa-search"></i>
+                                            <p class="no-data-msg">No prepositions detected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Article Count Card -->
+                            <div class="result-card article-count">
+                                <div class="result-icon">
+                                    <i class="fas fa-font"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Article Analysis</h4>
+                                    <div id="article-count-container" class="word-analysis-container">
+                                        <!-- Article counts will be inserted here by JavaScript -->
+                                        <div class="empty-article-container">
+                                            <i class="fas fa-search"></i>
+                                            <p class="no-data-msg">No articles detected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Character breakdown moved to the end -->
+                            <div class="result-card detailed-chars">
+                                <div class="result-icon">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+                                <div class="result-data">
+                                    <h4>Character Breakdown</h4>
+                                    <div class="char-metrics-vertical">
+                                        <div class="char-metric-item">
+                                            <span class="metric-label">Letters:</span>
+                                            <span id="letter-count" class="metric-value">0</span>
+                                        </div>
+                                        <div class="char-metric-item">
+                                            <span class="metric-label">Spaces:</span>
+                                            <span id="space-count" class="metric-value">0</span>
+                                        </div>
+                                        <div class="char-metric-item">
+                                            <span class="metric-label">Newlines:</span>
+                                            <span id="newline-count" class="metric-value">0</span>
+                                        </div>
+                                        <div class="char-metric-item">
+                                            <span class="metric-label">Special Symbols:</span>
+                                            <span id="symbol-count" class="metric-value">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Removed the detailed-results section containing tabs for common words, reading level, and sentiment -->
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; <span id="current-year"></span> Tanush Garg. All rights reserved.</p>
-    </footer>
-    
-    <!-- Theme toggle button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Tanush Garg. All rights reserved.</p>
+        </footer>
+        
+        <!-- Theme toggle button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+        
+        <!-- Fullscreen toggle button -->
+        <button id="fullscreen-toggle" class="fullscreen-toggle" aria-label="Toggle fullscreen mode">
+            <i class="fas fa-expand"></i>
+        </button>
+    </div>
     
     <script>
+        // Add loading animation handler
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 1200); // Show loader for slightly longer for better effect
+        });
+        
         document.getElementById("current-year").textContent = new Date().getFullYear();
     </script>
     <script src="js/common.js"></script>
     <script src="js/text_analysis.js"></script>
     <script src="js/analytics.js"></script>
+    <script src="js/fullscreen.js"></script>
 </body>
 </html>
