@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pronounCountContainer = document.getElementById('pronoun-count-container');
     const prepositionCountContainer = document.getElementById('preposition-count-container');
     const articleCountContainer = document.getElementById('article-count-container');
+    const warningEl = document.getElementById('word-warning');
     
     // Analysis result elements
     const wordCountEl = document.getElementById('word-count');
@@ -86,6 +87,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const charNoSpaces = text.replace(/\s/g, '').length;
         const sentenceCount = countSentences(text);
         const paragraphCount = countParagraphs(text);
+        
+        // Display a floating warning if the word count is less than 10,000
+        if (wordCount < 10000) {
+            warningEl.textContent = `Warning: The text contains only ${wordCount} words, which is less than the required 10,000 words.`;
+            warningEl.style.display = 'block';
+            warningEl.style.textAlign = 'center';
+        } else {
+            warningEl.style.display = 'none';
+        }
         
         // Character breakdown counts
         const charDetails = countCharacterDetails(textInput.value); // Use non-trimmed value to preserve all characters
@@ -233,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }
+        
+        // Hide the warning element
+        warningEl.style.display = 'none';
     }
     
     function loadSampleText() {
