@@ -236,11 +236,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function loadSampleText() {
-        textInput.value = `Text analysis is the process of using computer systems to understand human language. It helps us extract meaning from unstructured text data. This technology powers many applications we use daily.
+        textInput.value = `
+Technology has revolutionized the way we live, work, and interact with the world around us. From the invention of the wheel to the rise of artificial intelligence, technological advancements have consistently shaped human history. The digital age, in particular, has brought about unprecedented changes, enabling instant communication, access to vast amounts of information, and automation of complex tasks.
 
-Natural Language Processing (NLP) combines computer science, artificial intelligence, and linguistics to enable computers to understand human language. By using statistical models, computers can analyze text quickly and efficiently.
+The internet, one of the most transformative technologies of the modern era, has connected billions of people worldwide. It has democratized knowledge, allowing individuals to learn, share, and collaborate across borders. Social media platforms have further amplified this connectivity, creating virtual communities and enabling real-time interactions.
 
-Text analysis can identify key themes, measure sentiment, classify content, and extract specific information from documents.`;
+Artificial intelligence (AI) is another groundbreaking technology that is reshaping industries. AI-powered systems can analyze data, recognize patterns, and make decisions with minimal human intervention. Applications of AI range from healthcare, where it aids in diagnosing diseases, to autonomous vehicles, which promise safer and more efficient transportation.
+
+Cloud computing has revolutionized the way businesses operate by providing scalable and cost-effective solutions for data storage and processing. It has enabled startups and enterprises alike to innovate without the need for significant upfront investments in infrastructure.
+
+The rise of the Internet of Things (IoT) has further blurred the lines between the physical and digital worlds. IoT devices, such as smart thermostats and wearable fitness trackers, collect and share data to improve efficiency and enhance user experiences.
+
+Blockchain technology, initially popularized by cryptocurrencies like Bitcoin, is now being explored for its potential in secure and transparent record-keeping. Industries such as finance, supply chain, and healthcare are leveraging blockchain to enhance trust and reduce fraud.
+
+Despite its many benefits, technology also poses challenges. Privacy concerns, cybersecurity threats, and the digital divide are pressing issues that need to be addressed. As technology continues to evolve, it is crucial to strike a balance between innovation and ethical considerations.
+
+The future of technology holds immense promise. Emerging fields like quantum computing, biotechnology, and renewable energy are poised to tackle some of humanity's most pressing challenges. By fostering collaboration and investing in research and development, we can harness the power of technology to create a better, more sustainable world.
+
+`.repeat(30); // Repeat to generate approximately 10,000 words
         analyzeText();
     }
     
