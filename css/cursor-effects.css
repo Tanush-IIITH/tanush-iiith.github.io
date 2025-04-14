@@ -1,0 +1,122 @@
+.cursor-outer,
+.cursor-inner {
+    opacity: 0; /* Start hidden until JavaScript confirms cursor is working */
+    pointer-events: none;
+    position: fixed;
+    border-radius: 50%;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    margin-left: -20px; /* Half the width */
+    margin-top: -20px; /* Half the height */
+    transition: width 0.3s ease-out, height 0.3s ease-out, 
+                opacity 0.3s ease, margin 0.3s ease;
+}
+
+.cursor-outer {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(73, 153, 233, 0.7);
+    box-shadow: 0 0 10px rgba(73, 153, 233, 0.3);
+}
+
+.cursor-inner {
+    width: 8px;
+    height: 8px;
+    margin-left: -4px; /* Half the width */
+    margin-top: -4px; /* Half the height */
+    background-color: rgba(73, 153, 233, 0.8);
+}
+
+/* Dark mode cursor styles */
+body.dark-mode .cursor-outer {
+    border-color: rgba(255, 204, 0, 0.7);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+body.dark-mode .cursor-inner {
+    background-color: rgba(255, 204, 0, 0.8);
+}
+
+/* Cursor animation for mouse movement */
+.cursor-outer.moving {
+    transform: scale(0.9);
+}
+
+.cursor-inner.moving {
+    transform: scale(1.2);
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    border-radius: 50%;
+    background-color: rgba(73, 153, 233, 0.3);
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.cursor-trail.fade {
+    opacity: 0;
+}
+
+body.dark-mode .cursor-trail {
+    background-color: rgba(255, 204, 0, 0.3);
+}
+
+/* Click animation */
+@keyframes cursorClick {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.cursor-click {
+    animation: cursorClick 0.5s forwards;
+}
+
+/* Hover effects */
+.cursor-outer.hover {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    background-color: rgba(73, 153, 233, 0.1);
+    border-width: 1px;
+}
+
+.cursor-inner.hover {
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+}
+
+body.dark-mode .cursor-outer.hover {
+    background-color: rgba(255, 204, 0, 0.1);
+}
+
+/* Hide default cursor when custom cursor is active */
+html.custom-cursor {
+    cursor: none;
+}
+
+/* Hide custom cursor during loading */
+body:not(.loaded) .cursor-outer,
+body:not(.loaded) .cursor-inner,
+body:not(.loaded) .cursor-trail {
+    opacity: 0 !important;
+}
+
+/* Disable on mobile */
+@media (max-width: 768px) {
+    .cursor-outer, .cursor-inner, .cursor-trail {
+        display: none;
+    }
+}
